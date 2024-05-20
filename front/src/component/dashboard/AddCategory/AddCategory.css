@@ -1,0 +1,84 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:17px;
+    color:black ;
+    font-size: medium;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.pagesignin{
+    padding: 50px;
+    --main-colors:#00008B;
+    --sec-color:#ADD8E6;
+padding: 20px;
+display: flex;
+width:100%;
+background-color:#ADD8E6;
+align-items: center;
+}
+.pagesignin h1 {
+
+        font-family: "Playball", cursive;
+        font-weight: 400;
+        font-style: normal;
+      
+}
+.pagesignin1{
+    margin-top: 40px;
+   display: flex;
+   gap: 60px;
+   background-color:#ADD8E6;
+   justify-content: center;
+   align-items: center;
+   }
+
+
+
+.sign-part1{
+    width:calc((100% - 300px) / 2);
+    height:calc(100% - 100px);
+
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:17px;
+    color:rgb(19, 14, 8) ;
+    font-size: medium;
+    font-weight: 500;
+        border-radius: 20px;
+}
+.userLogo{
+    display: block;
+    width: 70%;
+    height: 90%;
+    border-radius: 20px;
+    background-color:#00008B;
+    border: black 2px solid;
+}
+
+.sign{
+width:calc((100% - 80px) / 2);
+margin-left: auto;
+}
+.sign input{
+    width: 80%;
+    border-color:black  ;
+    padding: 10px;
+    border-radius:5px;
+}
+.sign button{
+    border-radius:5px;
+    background-color: #0074d9;
+    border-color:black;
+    width: 80%;
+    color:white  ;
+    font-size: medium;
+    font-weight: 500;
+    padding: 10px;
+}

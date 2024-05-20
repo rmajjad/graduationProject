@@ -1,0 +1,4 @@
+.layouts{
+    display: flex;
+    flex-direction: column;
+}

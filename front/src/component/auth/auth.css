@@ -1,0 +1,43 @@
+.form{
+    height: 100vh;
+    background-image: url(img/background_form.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.form label {
+    display: block;
+    padding-bottom: 10px;
+}
+.form input {
+    width: 75%;
+}
+.form .content {
+    text-align: center;
+    font-size: large ;
+    padding: 30px;
+    color: var(--main-colors);
+    text-transform: capitalize;
+    top: 100px;
+    position: absolute;
+    width: 35%;
+    background-color:var(--sec-color);
+    position:absolute;
+  
+}
+.form .content  a{
+    display: block;
+}
+.form .content h2{
+    border-bottom: 1px solid var(--main-colors);
+    text-transform: uppercase;
+    
+}
+.form .submit {
+    background-color: var(--main-colors);
+   color: white;
+}
+.form .submit:hover {
+    background-color: gray;
+}

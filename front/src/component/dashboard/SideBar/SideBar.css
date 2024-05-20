@@ -1,0 +1,43 @@
+.adminbar{
+   
+   border-style: double;
+   border-radius:0px 22px  22px 0px;
+   border-color: black;
+   width: 200px;
+   height:100vh;
+   color: white;
+   background-color: rgb(1, 2, 12);
+   justify-content: space-around;
+}
+.adminbar .user svg{
+   display: block;
+   width:25px;
+}
+ .main{
+   background-color: #ADD8E6;
+}
+.adminbar .user{
+   
+  padding:10px 0;
+   border-top:solid 2px rgb(129, 165, 231) ;
+   border-bottom:solid 2px rgb(129, 165, 231);
+
+   display: flex;
+   flex-direction:row;
+   width:200px;
+   align-items: center;
+   justify-content: center;
+   padding-right: 20px;
+   gap:15px;
+}
+.adminbar .nav-link.active{
+   border-bottom: 3px solid rgb(129, 165, 231);
+
+  color: rgb(136, 175, 247);
+
+}
+
+.user:active {
+   color: #0074d9; 
+   transition: color .1s; 
+}

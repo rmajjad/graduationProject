@@ -1,0 +1,36 @@
+
+.main-img{
+    width:350px;
+    height: 250px;
+}
+.sub-img{
+width: 50px;
+height: 50px;
+
+}
+.review  {
+    padding: 15px;
+    height: 100vh;
+    overflow: scroll;
+  }
+.product_section{
+    background: linear-gradient(rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.3)),url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+}
+ .title{
+    top:20px;
+}
+.title span{
+ top: 22px;
+ font-size: 42px;
+ font-weight:700;
+ line-height: 1.4;
+ text-transform: uppercase;
+ color: var(--main-colors);
+}
+.title h2{
+  font-family: "Great Vibes" !important;
+  padding-left: 2px; 
+  color: var(--sec-color);
+  font-size: 50px;
+  line-height: 1;
+}

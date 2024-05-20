@@ -1,0 +1,61 @@
+.usersTabel{
+    margin: auto;
+    width:100%;
+    background-color:  #ADD8E6;
+    height:100vh;
+}
+.table{
+    background-color: #ADD8E6;
+   
+}
+.cateimg img{
+    width:60px;
+    height: 60px;
+}
+.deleteUsers button{
+    border: 0px solid ;
+}
+.deleteUsers svg{
+    display: block;
+    width:25px;
+}
+.updateUser svg{
+    display: block;
+    width:25px;
+ 
+ }
+ .updateUser{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+ }
+td{
+    background-color: #a3e4fa;
+}
+tfoot{
+    text-align: center;
+    width: 100%;
+    background-color: #ADD8E6;
+}
+tfoot tr td{
+   color: #c6eaf7;
+}
+.goToAddUser{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width:100%;
+
+}
+.linkAdd{
+   border:#050808 solid 2px;
+   background-color:#ADD8E6 ;
+   
+   width:200px;
+ 
+   padding:10px 20px;
+   color: #050808;
+    text-decoration: none;
+    font-size:18px;
+    font-weight: 600;
+}

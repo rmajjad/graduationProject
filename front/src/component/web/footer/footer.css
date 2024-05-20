@@ -1,0 +1,75 @@
+.footer ul{
+ list-style-type: none;
+
+}
+.footer h3{
+   font-size: 24px;
+}
+.footer ul{
+    font-weight: 100;
+    
+ }
+ .footer ul li:hover{
+    font-weight: 500;
+    
+ }
+.footer ul li{
+    margin-left: -36px;
+      padding: 10px;
+    }
+    .footer a {
+       
+        text-decoration: none;
+        color: white;
+      }
+      .footer svg{
+        margin-right: 20px;
+      }
+.copyright-area{
+    background-color: #1a1919;;
+}
+.copyright-area .icon  a{
+    margin-left: 12px;
+    border-radius: 50%;
+    font-size: large;
+    text-decoration: none;
+    padding: 20px;
+}
+.copyright-area .icon  .facebook{
+    color:#3b5999;
+    border: 2px #3b5999 solid;
+
+}
+
+.copyright-area .icon  .facebook:hover{
+    background-color:#3b5999;
+    color: white;
+}
+.copyright-area .icon  .instagram{
+    color:#ea4c89;
+    border: 2px #ea4c89 solid;
+   
+}
+.copyright-area .icon  .instagram:hover{
+    background-color:#ea4c89;
+    color: white;
+}
+.copyright-area .icon  .whatsapp:hover{
+    background-color:#0DC143;
+    color: white;
+}
+
+.copyright-area .icon  .whatsapp{
+    color:#0DC143;
+    border: 2px #0DC143 solid;
+}
+.copyright-area .icon  .twitter{
+    color:#1DA1F2;
+    border: 2px #1DA1F2 solid;
+
+}
+.copyright-area .icon  .twitter:hover{
+    background-color:#1DA1F2;
+    color: white;
+}
+
