@@ -15,7 +15,7 @@ function fileUpload(customTypes = []) {
         }
     }
     const upload = multer({ fileFilter, storage });
-    return upload;
+    return upload; 
 
 }
 export default fileUpload;

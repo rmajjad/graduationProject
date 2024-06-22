@@ -1,0 +1,126 @@
+.btnStatus {
+  color: white;
+  background-color: #86d9f5;
+  padding: 7px 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.statusForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  height: 70vh;
+  background: linear-gradient(
+      rgba(173, 216, 230, 0.502),
+      rgba(160, 185, 194, 0.5)
+    ),
+    url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+}
+.statusignin {
+  padding: 50px;
+  --main-colors: #00008b;
+  --sec-color: #add8e6;
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  background-color: #add8e6;
+  align-items: center;
+}
+.statusignin1 {
+  margin-top: 40px;
+  display: flex;
+  gap: 60px;
+  background-color: #add8e6;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 875px) {
+  .statusForm 
+  {
+    width:100%;
+  }
+}
+
+@media (max-width:500px) {
+    .statusForm 
+    {
+      width:100%;
+    }
+    .statusForm form button {
+        width: 180px;
+      }
+  }
+  @media (max-width:500px) {
+    .statusForm 
+    {
+      width:100%;
+      padding: 10px;
+    }
+    .selectStatus {
+        width:150px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+            rgba(89, 202, 240, 0.502),
+            rgba(4, 126, 170, 0.5),
+            rgba(89, 202, 240, 0.502)
+          ),
+          url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+      
+        justify-content: center;
+        margin: auto;
+        padding-left: 100px;
+        font-weight: 700;
+        border: 2px solid black;
+      }
+  }
+.Orderss {
+  height: 550px;
+}
+.statusForm form {
+  gap: 70px;
+}
+.statusForm form button {
+  width: 280px;
+}
+.divstatus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selectStatus {
+  width: 280px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+      rgba(89, 202, 240, 0.502),
+      rgba(4, 126, 170, 0.5),
+      rgba(89, 202, 240, 0.502)
+    ),
+    url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+
+  justify-content: center;
+  margin: auto;
+  padding-left: 100px;
+  font-weight: 700;
+  border: 2px solid black;
+}
+.selectStatus option {
+  font-weight: 600;
+  background: linear-gradient(
+      rgba(173, 216, 230, 0.502),
+      rgba(160, 185, 194, 0.5)
+    ),
+    url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+}
+.labelStatus {
+  font-size: 25px;
+  font-weight: 600;
+}

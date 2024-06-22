@@ -1,0 +1,71 @@
+/* تحسين استجابة العناصر في شاشات الهواتف المحمولة (أقل من 768 بكسل) */
+@media (max-width: 850px) {
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+     color : transparent !important;
+     border-color: none !important;
+     background-color: transparent !important;
+    }
+    .btn:active{
+      color: transparent  !important;
+    }
+    .carousel-inner {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .carousel-item {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    /* إخفاء النصوص */
+    .header p {
+      display: none;
+    }
+    .header h1 {
+      padding: 20px;
+    }
+  }
+  @media (max-width: 433px) {
+    .carousel-item img {
+      width: 100%;
+      height: auto;
+    }
+    .carousel-inner {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .header p {
+      display: none;
+    }
+    .btn-one, .btn-two{
+        display: block;
+       
+    }
+    .header h1 {
+        font-size: 20px !important;
+      padding: 20px;
+    }
+  }
+  
+ 
+  @media (max-width: 1200px) {
+    .btn-one,
+    .btn-two {
+      padding: 10px 20px;
+      font-size: 14px;
+      margin-right: 5px; 
+    }
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .header p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  }
+  

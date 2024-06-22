@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Input from '../../pages/Input.jsx'
 import { useFormik } from 'formik';
 import { validationSchema } from '../../web/validate/Validate.js';
@@ -7,15 +7,18 @@ import axios from 'axios';
 import {Bounce, toast } from 'react-toastify';
 import '../auth.css';
 export default function Register() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const initialValues={
     userName:'',
     email:'',
     password:'',
+    confirmPassword:''
   };
   const onSubmit=async users=>{
+    setIsLoading(true);
   try{
     const {data} = await axios.post('https://ai-o49a.onrender.com/auth/registor',users);
-    console.log(data)
     if(data.message == 'success'){
       formik.resetForm();
       toast.success('Account Creating successfully, Plase verify your email to login', {
@@ -41,6 +44,8 @@ export default function Register() {
         transition: Bounce,
         });
       
+      }finally{
+        setIsLoading(false);
       }
   }
 
@@ -71,6 +76,13 @@ export default function Register() {
       name:'password',
       title :'User Password',
       value:formik.values.password,
+    },
+    {
+      id:'confirmPassword',
+      type:'password',
+      name:'confirmPassword',
+      title :'Confirm Password',
+      value:formik.values.confirmPassword,
     }
   ];
   const renderInputs = inputs.map((input,index)=>
@@ -92,10 +104,10 @@ export default function Register() {
   return (
     <>
     <div className='form container'>
-    <form className='content ms-3 py-5' onSubmit={formik.handleSubmit} >
-    <h2 className='mb-3'>create account</h2>
+    <form className='content  py-5 ' onSubmit={formik.handleSubmit} >
+    <h2 className='mb-3 '>create account</h2>
       {renderInputs}
-      <button type='submit' className='mt-2 submit'  disabled={!formik.isValid} >Register</button>
+      <button type='submit' className=' submit'  disabled={!formik.isValid || isLoading ? "disabled" : ""} >{!isLoading?"Register":"wating.."}</button>
      </form>
     </div>
     

@@ -1,65 +1,62 @@
-:root{
-    --main-colors:#00008B;
-    --sec-color:#ADD8E6;
- }
- .sec-color{
-    background-color: var(--sec-color);
- }
+:root {
+  --main-colors: #00008b;
+  --sec-color: #add8e6;
+}
+.sec-color {
+  background-color: var(--sec-color);
+}
 
-.usersTabel{
-    margin: auto;
-    width:100%;
-    background-color:  #ADD8E6;
-    height:100vh;
+.usersTabel {
+  margin: auto;
+  width: 100%;
+  background-color: #e7eff1;
 }
-.table{
-    background-color: #ADD8E6;
-   
-}
-.deleteUsers button{
-    border: 0px solid ;
-}
-.deleteUsers svg{
-    display: block;
-    width:25px;
-}
-.updateUser svg{
-    display: block;
-    width:25px;
- 
- }
- .updateUser{
-    text-align: center;
-    display: flex;
-    justify-content: center;
- }
-td{
-    background-color: #a3e4fa;
-}
-tfoot{
-    text-align: center;
-    width: 100%;
-    background-color: #ADD8E6;
-}
-tfoot tr td{
-   color: #c6eaf7;
-}
-.goToAddUser{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    width:100%;
 
+.table {
+  background-color: #add8e6;
 }
-.linkAdd{
-   border:#050808 solid 2px;
-   background-color:#ADD8E6 ;
-   
-   width:200px;
- 
-   padding:10px 20px;
-   color: #050808;
-    text-decoration: none;
-    font-size:18px;
-    font-weight: 600;
+.deleteUsers button {
+  border: 0px solid;
+}
+.deleteUsers svg {
+  display: block;
+  width: 25px;
+}
+.updateUser svg {
+  display: block;
+  width: 25px;
+}
+.updateUser {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+td {
+  background-color: #a3e4fa;
+}
+tfoot {
+  text-align: center;
+  width: 100%;
+  background-color: #add8e6;
+}
+tfoot tr td {
+  color: #c6eaf7;
+}
+.goToAddUser {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.linkAdd {
+  border: #050808 solid 2px;
+  background-color: #add8e6;
+
+  width: 200px;
+
+  padding: 10px 20px;
+  color: #050808;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
 }

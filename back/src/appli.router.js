@@ -6,6 +6,7 @@ import userRouter from './modules/user/user.router.js';
 import productRouter from './modules/products/products.router.js';
 import cartRouter from './modules/cart/cart.router.js';
 import chatRouter from './modules/chat/chat.router.js';
+import orderRouter from './modules/order/order.router.js';
 
 
 
@@ -22,10 +23,16 @@ const initApp = (app, express) => {
     app.use('/users',userRouter);
     app.use('/cart',cartRouter);
     app.use('/chat',chatRouter); 
+    app.use('/order',orderRouter); 
+
 
     app.use('*', (req, res) => {
             return res.status(404).json({ message: "page not found" });
         });
+
+    app.use((err, req, res, next)=>{
+        res.status(err.statusCode).json({message:err.message});
+    });
     
     }
     

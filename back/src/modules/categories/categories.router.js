@@ -3,14 +3,17 @@ import fileUpload, { fileType } from "../../utils/multer.js";
 import * as Controller from "./categories.controller.js";
 import { auth } from "../../middleware/auth.js";
 import { endPoints } from "./categories.role.js";
+import { asyncHandler } from "../../utils/catchError.js";
+import { valedation } from "../../middleware/valedation.js";
+import * as schema from "./categories.valedation.js";
 
 const router = Router();
-
-
-router.post('/',auth(endPoints.create),fileUpload(fileType.image).single('image'),Controller.create)
-router.get('/',auth(endPoints.get),Controller.getAll);
-router.get('/active',Controller.getActive);
-router.get('/:id',auth(endPoints.get),Controller.getDetails);
-router.patch('/:id',auth(endPoints.update),fileUpload(fileType.image).single('image'),Controller.update);
-router.delete('/:id',auth(endPoints.delete),Controller.destroy);
-export default router;
+//
+//   
+router.post('/',fileUpload(fileType.image).single('image'),valedation(schema.createCategorySchema),auth(endPoints.create),asyncHandler(Controller.create))
+router.get('/',auth(endPoints.get),asyncHandler(Controller.getAll));
+router.get('/active',asyncHandler(Controller.getActive));
+router.get('/:id',valedation(schema.getDetailsSchema),auth(endPoints.get),asyncHandler(Controller.getDetails));
+router.patch('/:id',fileUpload(fileType.image).single('image'),valedation(schema.updateCategorySchema),auth(endPoints.update),asyncHandler(Controller.update));
+router.delete('/:id',valedation(schema.deleteCategorySchema),auth(endPoints.delete),asyncHandler(Controller.destroy));
+export default router;  

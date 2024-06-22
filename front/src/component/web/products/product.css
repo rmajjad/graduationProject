@@ -1,36 +1,132 @@
+.main-img-container {
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-.main-img{
-    width:350px;
-    height: 250px;
+.main-img {
+  width: 100%;
+  height: 350px;
+  object-fit: contain;
 }
-.sub-img{
-width: 50px;
-height: 50px;
 
+.sub-img-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
-.review  {
-    padding: 15px;
-    height: 100vh;
-    overflow: scroll;
-  }
-.product_section{
-    background: linear-gradient(rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.3)),url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+
+.sub-img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 5px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  object-fit: contain;
 }
- .title{
-    top:20px;
+
+.sub-img:hover {
+  transform: scale(1.1);
 }
-.title span{
- top: 22px;
- font-size: 42px;
- font-weight:700;
- line-height: 1.4;
- text-transform: uppercase;
- color: var(--main-colors);
+
+.review {
+  padding: 15px;
+  height: 100vh;
+  overflow-y: auto;
 }
-.title h2{
+
+.product_section {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg');
+  padding-bottom: 50px;
+}
+
+.title {
+  top: 20px;
+}
+
+.title span {
+  top: 22px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--main-colors);
+}
+
+.title h2 {
   font-family: "Great Vibes" !important;
-  padding-left: 2px; 
+  padding-left: 2px;
   color: var(--sec-color);
   font-size: 50px;
   line-height: 1;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .product_section .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-img-container {
+    max-width: 100%;
+  }
+
+  .main-img {
+    height: 200px; /* تقليل الارتفاع للشاشات الصغيرة */
+  }
+
+  .sub-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .title span {
+    font-size: 32px;
+  }
+
+  .title h2 {
+    font-size: 40px;
+  }
+
+  .finalPrice {
+    font-size: 24px;
+  }
+
+  .avg {
+    font-size: 18px;
+  }
+
+  .review {
+    height: auto;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 4px solid #f3f3f3; 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

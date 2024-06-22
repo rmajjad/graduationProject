@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useFormik } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -11,6 +11,7 @@ import './auth.css';
 export default function Sendcode() {
   let { setUserToken } = useContext(UserContex);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const initialValues = {
@@ -18,11 +19,27 @@ export default function Sendcode() {
   };
 
   const onSubmit = async users => {
-    const { data } = await axios.patch('https://ai-o49a.onrender.com/auth/sendCode', users);
-    if (data.message == 'success') {
-      localStorage.setItem("UserToken", data.token);
-      setUserToken(data.token);
-      toast.success('send code', {
+    setIsLoading(true);
+    try {
+      const { data } = await axios.patch('https://ai-o49a.onrender.com/auth/sendCode', users);
+      if (data.message == 'success') {
+        localStorage.setItem("UserToken", data.token);
+        setUserToken(data.token);
+        toast.success('code sent successfully, check your email', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+        navigate('/forgetpassword');
+      }
+    } catch (error) {
+      toast.error('Email not exist', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -33,7 +50,9 @@ export default function Sendcode() {
         theme: "colored",
         transition: Bounce,
       });
-      navigate('/forgetpassword');
+
+    } finally {
+      setIsLoading(false);
     }
   };
   const formik = useFormik({
@@ -74,7 +93,7 @@ export default function Sendcode() {
         <form className='content' onSubmit={formik.handleSubmit}>
           <h2 className='mb-3'>Enter Email</h2>
           {renderInputs}
-          <button type='submit' className='mt-2 submit' >sendcode</button>
+          <button type='submit' className='mt-2 submit' disabled={!formik.isValid || isLoading ? "disabled" : ""}>{!isLoading ? "sendcode" : "wating.."}</button>
         </form>
       </div>
 

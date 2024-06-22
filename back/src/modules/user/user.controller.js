@@ -1,4 +1,5 @@
 import userModel from "../../../DB/models/User.model.js"
+import { AppError } from "../../utils/AppError.js";
 
 
 
@@ -9,26 +10,26 @@ export const getAll = async (req, res) =>{
 }
 
 
-export const getDetails = async(req, res) => {
-    const user = await userModel.findById(req.params.id);
+export const getDetails = async(req, res, next) => {
+    const user = await userModel.findById(req.user._id);
     if(!user){
-        return res.status(404).json({message:"user not found"}); 
+        return next(new AppError(`user not found`,400));
     }
     
     return res.status(200).json({message:"success",user}); 
 
 } 
 
-export const update = async(req, res) => {
+export const update = async(req, res, next) => {
     const user = await userModel.findById(req.params.id);
 
     if(!user){
-        return res.status(404).json({message:"user not found"}); 
+        return next(new AppError(`user not found`,400));
     }
     user.userName = req.body.userName;
     user.email = req.body.email;
     if(await userModel.findOne({email:user.email,_id:{$ne:req.params.id}})){
-        return res.status(409).json({message:"user already exists"});
+        return next(new AppError(`user already exists`,409));
     }
     
 
@@ -43,10 +44,10 @@ export const update = async(req, res) => {
 };
 
 
-export const destroy = async(req,res)=> {
+export const destroy = async(req,res,next)=> {
     const user = await userModel.findByIdAndDelete(req.params.id);
     if(!user){
-        return res.status(404).json({message:"user not found"});
+        return next(new AppError(`user not found`,404));
     }
 
     

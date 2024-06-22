@@ -99,4 +99,42 @@
   .chat-input button:hover {
     background-color: var(--sec-color);
   }
+ /* تحسين الاستجابة لشاشات العرض الصغيرة */
+@media screen and (max-width: 768px) {
+    .chat-container {
+      max-width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    .chat-input {
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+    .chat-input input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .chat-input button {
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 2px;
+    }
+    .subchat{
+      width: 50vh;
+      height: 90vh;
+    }
+  }
+
+  /* تحسين الاستجابة لشاشات أصغر من 600 بكسل */
+
+/* تحسين الاستجابة لشاشات أصغر من 400 بكسل */
+@media screen and (max-width: 400px) {
+  .subchat{
+    width: 30vh;
+    height: 90vh;
+  }
+   
+  }
+ 
   

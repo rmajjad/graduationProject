@@ -1,0 +1,60 @@
+.pagesignin33 {
+    height: 95vh;
+    flex-wrap: wrap;
+   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(rgba(173, 216, 230, 0.502),rgba(160, 185, 194, 0.5)),url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+
+}
+.signss{
+    width:70%;
+}
+.contentss.idOption{
+    height:70px;
+}
+.addProductss{
+    border: 3px double  black;
+    
+}
+.Lab{
+width:170px;
+font-weight:700;
+}
+.btnaddP{
+    width:100px;
+}
+
+.contentss{
+display: flex;
+flex-direction: row;
+justify-content:space-between;
+align-items: center;
+gap: 40px;
+width:80%; 
+}
+.contentss input{
+    width: 250px;
+}
+.select_id{
+    width: 250px;
+
+    border-color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+@media (max-width:570px) {
+    .contentss{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+}
+@media (max-width:700px) {
+    .Lab{
+       font-size:10px;
+      }
+}

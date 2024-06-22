@@ -1,5 +1,6 @@
 import { spawn } from 'child_process';
 import chatModel from "../../../DB/models/Chat.model.js";
+import { AppError } from '../../utils/AppError.js';
 
 const prediction = (SymptomPara) => {
     return new Promise((resolve, reject) => {
@@ -22,16 +23,19 @@ const prediction = (SymptomPara) => {
                 result = result.replace(/[\r\n]/g, '');
                 resolve(result);
             }
-        });
+        }); 
     });
 };
 
-export const create = async (req, res) => {
+
+
+
+export const create = async (req, res, next) => {
     try {
         let { message } = req.body;
 
         if (!message) {
-            return res.status(400).json({ error: 'Message is required' });
+            return next(new AppError(`Message is required`,400));
         }
 
         const newChat = new chatModel({ message });
@@ -40,7 +44,7 @@ export const create = async (req, res) => {
         let result = await prediction(newChat.message); // Await the prediction result
         req.body.medicine = result;
         //console.log(result);
-        return res.status(201).json({ message: "success", Medicine : result });
+        return res.status(201).json({ message: "success", Disease : result });
 
     } catch (error) { 
         console.error('Error saving chat message:', error);

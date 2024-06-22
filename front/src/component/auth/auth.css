@@ -1,43 +1,165 @@
-.form{
+.form {
     height: 100vh;
-    background-image: url(img/background_form.png);
+    background-image: url(/img/background_form.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
+
+.form .content {
+    text-align: center;
+    font-size: large;
+    padding: 20px;
+    color: var(--main-colors);
+    text-transform: capitalize;
+    background-color: var(--sec-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-left: 0;
+    box-sizing: border-box;
+}
+
 .form label {
     display: block;
     padding-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
 }
+
 .form input {
-    width: 75%;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
-.form .content {
-    text-align: center;
-    font-size: large ;
-    padding: 30px;
-    color: var(--main-colors);
-    text-transform: capitalize;
-    top: 100px;
-    position: absolute;
-    width: 35%;
-    background-color:var(--sec-color);
-    position:absolute;
-  
-}
-.form .content  a{
-    display: block;
-}
-.form .content h2{
-    border-bottom: 1px solid var(--main-colors);
-    text-transform: uppercase;
-    
-}
+
 .form .submit {
     background-color: var(--main-colors);
-   color: white;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 .form .submit:hover {
     background-color: gray;
+}
+
+.form .content h2 {
+    border-bottom: 1px solid var(--main-colors);
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1150px) {
+    .form .content {
+        width: 100%;
+        padding: 20px;
+        margin-left: 0;
+        max-width: 90%;
+    }
+
+    .form {
+        height: 200vh;
+        background-image: none;
+        background: linear-gradient(rgba(177, 175, 175, 0.502), rgb(173, 216, 230, 0.5)), url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+        background-size: cover;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .form input {
+        font-size: 1em;
+    }
+
+    .form .submit {
+        font-size: 1em;
+    }
+
+    .form .content h2 {
+        font-size: 1.5em;
+    }
+
+    .form .content a {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 768px) {
+    .form {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .form .content {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .form input {
+        font-size: 0.9em;
+    }
+
+    .form .submit {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+
+    .form .content h2 {
+        font-size: 1.2em;
+    }
+
+    .form .content a {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .form .content {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .form input {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    .form .submit {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+
+    .form .content h2 {
+        font-size: 1em;
+    }
+
+    .form .content a {
+        font-size: 0.7em;
+    }
 }

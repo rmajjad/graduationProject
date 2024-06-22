@@ -1,24 +1,32 @@
 .adminbar{
-   
    border-style: double;
    border-radius:0px 22px  22px 0px;
    border-color: black;
    width: 200px;
-   height:100vh;
+   height:85vh;
    color: white;
    background-color: rgb(1, 2, 12);
    justify-content: space-around;
 }
+
 .adminbar .user svg{
    display: block;
    width:25px;
 }
  .main{
-   background-color: #ADD8E6;
+
+   background-color: black;
+   
+   
+}
+.main2{
+   display: flex;
+   gap:10px;
+   
 }
 .adminbar .user{
    
-  padding:10px 0;
+  padding:7px 0;
    border-top:solid 2px rgb(129, 165, 231) ;
    border-bottom:solid 2px rgb(129, 165, 231);
 
@@ -40,4 +48,65 @@
 .user:active {
    color: #0074d9; 
    transition: color .1s; 
+}
+@media (max-width: 1030px) {
+   .adminbar{
+       display: flex;
+       flex-direction:row;
+   }
+   
+}
+
+@media (max-width: 768px) {
+   .adminbar {
+     width: 200px;
+   }
+ }
+ 
+ @media (max-width: 576px) {
+   .adminbar {
+     width: 100%;
+     flex-direction: row;
+     justify-content: space-between;
+   }
+   .div1 h2 {
+     font-size: 1.2em;
+   }
+   .user {
+     padding: 5px 0;
+   }
+   .user svg {
+     width: 20px;
+     height: 20px;
+   }
+   .nav-link {
+     font-size: 0.9em;
+   }
+ }
+ 
+ @media (max-width: 400px) {
+   .adminbar {
+     display: flex;
+     flex-direction: column;
+   }
+   .user {
+     flex-direction: column;
+     align-items: flex-start;
+   }
+   .user svg {
+     margin-bottom: 5px;
+   }
+ }
+ .main .navbar {
+  border-style: double;
+  border-radius: 0px 22px 22px 0px;
+  border-color: black;
+  width: 200px;
+  height: 100vh;
+  color: white;
+  background-color: rgb(1, 2, 12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-;
+  gap: 20px;
 }

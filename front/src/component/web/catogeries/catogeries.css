@@ -45,3 +45,47 @@
     bottom: 0px;
     opacity: 1;
 }
+.category-img{
+    border-radius: 50%;
+
+}
+.no-underline {
+    text-decoration: none;
+  }
+
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .categories-img {
+    text-align: center;
+  }
+  
+  .category-img {
+    
+   
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .category-name {
+    font-size: 1.2em;
+    margin-top: 10px;
+    color: var(--main-colors);
+    text-align: center;
+  }
+  
+  @media (max-width: 640px) {
+    .category-name {
+      font-size: 1em;
+    }
+  }
+  

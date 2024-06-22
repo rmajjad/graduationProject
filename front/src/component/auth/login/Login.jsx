@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useFormik } from 'formik';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -9,6 +9,7 @@ import UserContex from '../../web/context/User.jsx';
 import Input from '../../pages/Input.jsx';
 import '../auth.css';
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false);
   let { UserToken, setUserToken } = useContext(UserContex);
   const navigate = useNavigate();
   if (UserToken) {
@@ -20,8 +21,9 @@ export default function Login() {
   };
 
   const onSubmit = async users => {
+    setIsLoading(true);
     try {
-      const { data } = await axios.post(`http://localhost:4000/auth/login`, users);
+      const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, users);
       console.log(data)
       if (data.message == 'success') {
         localStorage.setItem("UserToken", data.token);
@@ -37,13 +39,8 @@ export default function Login() {
           theme: "colored",
           transition: Bounce,
         });
-        console.log(data);
-        if (data.role == "Admin") {
-          navigate('/dashboard');
-        }
-        else {
-          navigate('/');
-        }
+        navigate('/');
+
 
       }
     } catch (error) {
@@ -59,6 +56,8 @@ export default function Login() {
         transition: Bounce,
       });
 
+    } finally {
+      setIsLoading(false);
     }
 
 
@@ -104,11 +103,11 @@ export default function Login() {
   return (
     <>
       <div className='form mt-5  py-5'>
-        <form className='content ms-3 py-5' onSubmit={formik.handleSubmit}>
-          <h2 className='mb-3'>Login account</h2>
+        <form className='content  ms-3 py-5' onSubmit={formik.handleSubmit}>
+          <h2 className='mb-3 '>Login account</h2>
           {renderInputs}
-          <Link to='/sendcode' >Rest Password ?</Link>
-          <button type='submit' className='mt-2 submit'  >Login</button>
+          <Link to='/sendcode' >Reset Password?</Link>
+          <button type='submit' className='mt-2 submit' disabled={!formik.isValid || isLoading ? "disabled" : ""} >{!isLoading ? "Login" : "wating.."}</button>
         </form>
       </div>
     </>

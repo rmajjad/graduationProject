@@ -1,0 +1,153 @@
+/* عام */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.userorder{
+  overflow: none;
+}
+
+.order{
+  padding: 250px;
+  height: 100vh;
+  overflow: scroll !important;
+}
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* العنوان */
+.title {
+  margin-top: 20px;
+}
+
+.title h2 {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.title span {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* تصميم الجداول */
+.order {
+  overflow: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+.order h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.table {
+
+  width: 100%;
+  max-width: 1000px; /* ضبط الحد الأقصى للعرض */
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.table th, .table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* تصميم استجابة الجداول للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .table, .table thead, .table tbody, .table th, .table td, .table tr {
+    display: block;
+  }
+
+  .table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .table tr {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+
+  .table td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  .table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    padding-right: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 480px) {
+  .table td:before {
+    font-size: 0.9rem;
+  }
+}
+
+/* تصميم الخلفية */
+.userorder {
+  background: linear-gradient(rgba(173, 216, 230, 0.502), rgb(173, 216, 230, 0.5)), url('https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg');
+  padding: 20px;
+}

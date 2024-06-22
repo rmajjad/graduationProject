@@ -3,19 +3,23 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Category.css";
 import "../Users/loader.css";
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 function Category() {
   const [loader, setLoader] = useState(true);
   const [categories, setCategories] = useState([]);
   const getCategories = async () => {
-    try {
+    try{
       const token = localStorage.getItem('UserToken');
-      console.log(token);
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/categories`,
-        { headers: { Authorization: `Rama__${token}` } });
-      console.log(data);
-      setCategories(data.categories);
-      setLoader(false);
-    } catch (error) {
+    const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/categories`,
+    {headers:{Authorization: `Rama__${token}`}});
+    console.log(data);
+    setCategories(data.categories);
+    setLoader(false);
+    }catch(error){
       console.log(error);
     }
   };
@@ -24,22 +28,67 @@ function Category() {
   }, []);
 
   const RemoveCategory = async (id) => {
+    setLoader(true);
     const token = localStorage.getItem("UserToken");
     const { data } = await axios.delete(
       `${import.meta.env.VITE_API_URL}/categories/${id}`,
       {
-        headers: { Authorization: `Rama__${token}` }
-
+        headers:{Authorization: `Rama__${token}`} 
+  
       }
     );
     getCategories();
+  };
+  const MySwal = withReactContent(Swal);
+
+  const handleClick = (id) => {
+    const swalWithBootstrapButtons = MySwal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        RemoveCategory(id).then(() => {
+          swalWithBootstrapButtons.fire({
+            title: 'Deleted!',
+            text: 'This item has been successfully deleted.',
+            icon: 'success'
+          });
+        }).catch((error) => {
+          swalWithBootstrapButtons.fire({
+            title: 'Error!',
+            text: 'There was an error deleting the file.',
+            icon: 'error'
+          });
+        });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        swalWithBootstrapButtons.fire({
+          title: 'Cancelled',
+          
+          icon: 'error'
+        });
+      }
+    });
   };
 
   return (
     <>
       {loader == false ? (
-        <div className="usersTabel col">
-          <table className="table table-striped" border={6}>
+        <div className="usersTabel col" style={{ height: 550, backgroundColor: " #e7eff1" }}>
+          <div class="table-responsive">
+          <table className="table table-striped" border={6} >
             <thead>
               <th scope="col" className="text-center">
                 Category Name
@@ -56,10 +105,14 @@ function Category() {
               <th scope="col" className="text-center">
                 Delete Category
               </th>
+              <th scope="col" className="text-center">
+              Category Products
+              </th>
+              
             </thead>
             <tbody>
               {categories?.map((categorie) => (
-                <tr key={categorie._id}>
+                <tr  key={categorie._id}>
                   <td>
                     <div className="text-center">
                       <span>{categorie.name}</span>
@@ -78,7 +131,7 @@ function Category() {
                   <td>
                     <div className="text-center updateUser">
                       <Link
-                        to={`/UpdateCategory/?id=${categorie._id}&name=${categorie.name}&status=${categorie.status}`}
+                        to={`/dashboard/UpdateCategory/?id=${categorie._id}&name=${categorie.name}&status=${categorie.status}`}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +149,7 @@ function Category() {
                     <div className="text-center deleteUsers">
                       <button
                         className="btn-light"
-                        onClick={() => RemoveCategory(categorie._id)}
+                        onClick={() => handleClick(categorie._id)}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -112,23 +165,34 @@ function Category() {
                       </button>
                     </div>
                   </td>
-                </tr>
-              ))}
-            </tbody>
-
-            <tfoot>
-              <tr>
-                <td className="bg-light" colSpan={6}>
-                  <div className="goToAddUser">
-                    <Link to="/dashboard/AddCategory">
-                      {" "}
-                      <button className="linkAdd">Add Category</button>{" "}
+                  <td> 
+                  <div className="text-center divstatus">
+                    <Link
+                      className="btn-light btnStatus"
+                      
+                      to={`/dashboard/CategoryProducts/?id=${categorie._id}`}
+                      >
+                  Products
                     </Link>
                   </div>
                 </td>
-              </tr>
-            </tfoot>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot>
+                <tr>
+                  <td className="bg-light" colSpan={6}></td>
+                </tr>
+              </tfoot>
+            
           </table>
+          </div>
+          <div className="goToAddUser">
+          <Link to="/dashboard/AddCategory">
+                      {" "}
+                      <button className="linkAdd">Add Category</button>{" "}
+          </Link>
+          </div>
         </div>
       ) : (
         <div className="loading w-100   vh-100 z-3">

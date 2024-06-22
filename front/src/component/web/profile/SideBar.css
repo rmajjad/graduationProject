@@ -1,55 +1,108 @@
-.main .navbar {
-   border-style: double;
-   border-radius: 0px 22px 22px 0px;
-   border-color: black;
-   width: 200px;
-   height: 100vh;
-   color: white;
-   background-color: rgb(1, 2, 12);
-   justify-content: space-between;
-   gap: 100px;
+/* Reset some default styles */
+body, html, div, nav, h2, svg {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main container */
+.user_bar .main {
+  height: 100vh;
+  background-color: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+}
+.main{
+  border-color: black;
+}
+.user_bar .navbar {
+  border-style: double;
+  border-radius: 0px 22px 22px 0px;
+  border-color: black;
+  width: 200px;
+  height: 100vh;
+  color: white;
+  background-color: rgb(1, 2, 12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 20px;
+  align-items: stretch;
+}
+/* Navbar styles */
+.user_bar .adminbar {
+  padding: 20px 0;
+}
+
+.user_bar .navbarr {
+  width: 100%;
+}
+
+.user_bar .partnav {
+  flex-grow: 1;
+}
+
+/* User info and section header */
+.user_bar .div1 {
+  padding: 20px;
+  text-align: center;
+}
+
+.user_bar .div1 h2 {
+  color: #0074d9;
+  font-size: 1.5rem;
+}
+
+/* Flex row styles */
+.user_bar .flex-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+ 
+  transition: background-color 0.3s;
+  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+}
+
+.user_bar .flex-row:hover {
+  background-color: #e2e6ea;
+}
+
+.user_bar .user svg {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  fill: #0074d9;
+}
+
+/* NavLink styles */
+.user_bar .nav-item.nav-link {
+  color: var(--sec-color);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.user_bar .nav-item.nav-link:hover, .nav-item.nav-link.active {
+  color: #0074d9;
+}
+
+/* SVG styles */
+.user_bar svg {
+  fill: #0074d9;
+  width: 24px;
+  height: 24px;
+}
+.nav-item.nav-link.active  {
+  border-bottom:  2px solid skyblue !important;
+}
+.nav-link.active{
+  border-bottom: 3px solid rgb(129, 165, 231);
+
+ color: rgb(136, 175, 247);
 
 }
 
-.main .user svg {
-   display: block;
-   width: 25px;
-
-}
-
-.main {
-   background-color: black;
-}
-
-.main .user {
-
-   padding: 10px 0;
-   border-top: solid 2px rgb(129, 165, 231);
-   border-bottom: solid 2px rgb(129, 165, 231);
-
-   display: flex;
-   flex-direction: row;
-   width: 200px;
-   align-items: center;
-   justify-content: center;
-   padding-right: 20px;
-   gap: 15px;
-}
-
-.main .nav-link.active {
-   border-bottom: 3px solid rgb(129, 165, 231);
-
-   color: rgb(136, 175, 247);
-
-}
-
-.main .user:active {
-   color: #0074d9;
-   transition: color .1s;
-}
-
-.order {
-   padding: 250px;
-   height: 100vh;
-   overflow: scroll;
-}

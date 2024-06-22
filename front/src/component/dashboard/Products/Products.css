@@ -1,7 +1,7 @@
 .usersTabel{
     margin: auto;
     width:100%;
-    background-color:  #ADD8E6;
+    background-color:  #e7eff1;
     height:100vh;
 }
 .table{
@@ -20,11 +20,38 @@
     width:25px;
  
  }
+ .table-responsive {
+    max-height:77vh; /* يمكنك تحديد الارتفاع المناسب */
+    overflow-y: auto;
+}
+.btn_add{
+  padding: 10px;
+}
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color:#a3e4fa; /* يمكن تعديل الخلفية حسب التصميم */
+    z-index: 1; /* تأكد من أن الرأس فوق بقية الصفوف */
+}
+
  .updateUser{
     text-align: center;
     display: flex;
+    
     justify-content: center;
  }
+ .table th, .table td {
+    flex: 1 1 0; /* هذا يجعل كل عمود يأخذ نفس الحجم */
+}
+.table-row {
+    display: flex;
+}
+.pro_name{
+    font-size: 13px;
+}
+.Productss td{
+    width:calc(100% / 7) ;
+}
 td{
     background-color: #a3e4fa;
 }
@@ -54,4 +81,15 @@ tfoot tr td{
     text-decoration: none;
     font-size:18px;
     font-weight: 600;
+}
+.selectStatusPro{
+    width: 280px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(89, 202, 240, 0.502), rgba(4, 126, 170, 0.5), rgba(89, 202, 240, 0.502)), url(https://64fcef1…--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+    justify-content: center;
+    padding-left: 100px;
+    font-weight: 700;
+    border: 2px solid black;
 }

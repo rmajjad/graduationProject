@@ -5,7 +5,28 @@
  .sec-color{
     background-color: var(--sec-color);
  }
+.updateForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 30px 20px;
+    background: linear-gradient(rgba(173, 216, 230, 0.502),rgba(160, 185, 194, 0.5)),url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
 
+}
+.updateForm .inputText{
+    width: 280px;
+}
+.updateForm form button{
+
+    width: 280px;
+ }
+ .updateForm label{
+    font-size: 20px;
+    font-weight: 600;
+ }
 .usersTabel{
     margin: auto;
     width:100%;

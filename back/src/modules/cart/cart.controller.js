@@ -1,13 +1,48 @@
 import cartModel from "../../../DB/models/Cart.model.js";
+import productModel from "../../../DB/models/Product.model.js";
+import { AppError } from "../../utils/AppError.js";
 
 
-export const get = async (req, res) => {
+export const get = async (req, res, next) => {
     const cart = await cartModel.findOne({ userId: req.user._id });
-    return res.json({ message: "success", products: cart.products });
+    req.body.products = cart.products;
+
+    let finalProductList = [];
+    let subTotal = 0;
+    for(let product of req.body.products){
+
+        const checkProduct = await productModel.findOne({
+            _id:product.productId,
+            stock:{$gte:product.quantity},
+        }); 
+        
+        if(!checkProduct){
+            return next(new AppError(`product quantity not available`,400));
+        }
+        
+
+        product = product.toObject();
+        
+        product.name = checkProduct.name;
+        product.discount = checkProduct.discount;
+        product.unitPrice = checkProduct.price;
+        product.mainImage = checkProduct.mainImage;
+        product.finalPrice = product.quantity * checkProduct.finalPrice;
+        subTotal += product.finalPrice
+        finalProductList.push(product);
+        
+
+    }
+    return res.json({ message: "success", products: finalProductList,subTotal });
 };
 
-export const create = async (req, res) => {
+export const create = async (req, res, next) => {
     const { productId } = req.body;
+    const product = await productModel.findById(productId);
+    
+    if(!product){
+        return next(new AppError(`Product not found`,404));
+    }
     const cart = await cartModel.findOne({ userId: req.user._id });
     if (!cart) {
         const newCart = await cartModel.create({
@@ -18,7 +53,7 @@ export const create = async (req, res) => {
     }
     for (let i = 0; i < cart.products.length; i++) {
         if (cart.products[i].productId == productId) {
-            return res.json({ message: "product already exists" });
+            return next(new AppError(`product already exists`,400));
         }
     }
     cart.products.push({ productId });

@@ -1,6 +1,7 @@
 import slugify from "slugify";
 import cloudinary from "../../utils/cloudinary.js";
 import categoryModel from "../../../DB/models/Category.model.js";
+import { AppError } from "../../utils/AppError.js";
 
 
 
@@ -10,7 +11,7 @@ export const create = async(req, res, next) => {
 
     
     if(await categoryModel.findOne({name:req.body.name})){
-        return res.status(409).json({message:"category already exists"});
+        return next(new AppError(`category already exists`,409));
     }
     req.body.slug = slugify(req.body.name);
     
@@ -47,10 +48,10 @@ export const getActive = async(req, res) => {
     return res.status(200).json({message:"success",categories});
 };
 
-export const getDetails = async(req, res) => {
+export const getDetails = async(req, res, next) => {
     const category = await categoryModel.findById(req.params.id);
     if(!category){
-        return res.status(404).json({message:"category not found"}); 
+        return next(new AppError(`category not found`,404));
     }
     
     return res.status(200).json({message:"success",category}); 
@@ -59,15 +60,16 @@ export const getDetails = async(req, res) => {
 
 
 
-export const update = async(req, res) => {
+export const update = async(req, res, next) => {
     const category = await categoryModel.findById(req.params.id);
     
     if(!category){
-        return res.status(404).json({message:"category not found"}); 
+        return next(new AppError(`category not found`,404));
     }
     category.name = req.body.name.toLowerCase();
     if(await categoryModel.findOne({name:req.body.name,_id:{$ne:req.params.id}})){
-        return res.status(409).json({message:"category already exists"});
+        //return res.status(409).json({message:"category already exists"});
+        return next(new AppError(`category already exists`,409));
     }
     category.slug = slugify(req.body.name);
     if(req.file){
@@ -86,10 +88,10 @@ export const update = async(req, res) => {
     return res.json({message:"success", category});
 };
 
-export const destroy = async(req,res)=> {
+export const destroy = async(req,res,next)=> {
     const category = await categoryModel.findByIdAndDelete(req.params.id);
     if(!category){
-        return res.status(404).json({message:"category not found"});
+        return next(new AppError(`category not found`,404));
     }
     await cloudinary.uploader.destroy(category.image.public_id);
 
