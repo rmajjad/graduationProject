@@ -105,7 +105,7 @@ export const router = createBrowserRouter([
          <Profile />
       </ProductRoute>,
       children:[{
-        index:true,
+        path:'info',
         element:<Userinfo/>
       },
       {
@@ -114,7 +114,7 @@ export const router = createBrowserRouter([
       },
       {
         path:'order',
-        element:<Order/>
+        element:<Order/>,
       }
 
 

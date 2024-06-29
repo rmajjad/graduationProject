@@ -43,6 +43,7 @@ export const create = async (req, res, next) => {
         
         let result = await prediction(newChat.message); // Await the prediction result
         req.body.medicine = result;
+        req.body.createdBy = req.user._id;
         //console.log(result);
         return res.status(201).json({ message: "success", Disease : result });
 

@@ -49,9 +49,11 @@ def predict_disease_and_tips(new_text,tips_data,data):
 
     tips = matching_rows.values[0] if not matching_rows.empty else f"No tips found for '{predicted_category}'"
 
-    result = predicted_category,{"I advive you to":tips}
-#{"predicted_category": predicted_category, "tips": tips}
-    return json.dumps(result)
+    result = predicted_category, {"I advise you to": tips}
+    result_str = str(result)
+    result_str = result_str.replace("[", "").replace("]", "").replace("{", "").replace("}", "").replace("'", "").replace("(", "").replace(")", "")
+    
+    return result_str
 
 if __name__ == "__main__":
     data_path = 'test.csv'

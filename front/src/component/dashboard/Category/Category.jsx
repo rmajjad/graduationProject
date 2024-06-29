@@ -169,7 +169,7 @@ function Category() {
                   <div className="text-center divstatus">
                     <Link
                       className="btn-light btnStatus"
-                      
+                     
                       to={`/dashboard/CategoryProducts/?id=${categorie._id}`}
                       >
                   Products
@@ -184,14 +184,14 @@ function Category() {
                   <td className="bg-light" colSpan={6}></td>
                 </tr>
               </tfoot>
-            
+           
           </table>
           </div>
           <div className="goToAddUser">
           <Link to="/dashboard/AddCategory">
                       {" "}
                       <button className="linkAdd">Add Category</button>{" "}
-          </Link>
+             </Link>
           </div>
         </div>
       ) : (

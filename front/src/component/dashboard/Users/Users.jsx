@@ -91,10 +91,10 @@ function Users() {
     <>
       {loader == false ? (
         <div
-          className="usersTabel col Userss h-100"
-          style={{ height: 550, backgroundColor: " #e7eff1" }}
+          className="usersTabel col Userss"
+          style={{ height: 'auto', backgroundColor: " #e7eff1"}}
         >
-          <div class="table-responsive">
+          <div class="table-responsive ">
             <table className="table table-striped " border={6}>
               <thead>
                 <th scope="col" className="text-center">
@@ -171,10 +171,10 @@ function Users() {
               </tfoot>
             </table>
           </div>
-          <div className="goToAddUser">
+          <div className="goToAddUser py-3">
             <Link to="/dashboard/AddUser">
               {" "}
-              <button className="linkAdd">Add User</button>{" "}
+              <button className="linkAdd" >Add User</button>{" "}
             </Link>
           </div>
         </div>

@@ -14,11 +14,11 @@ form {
 .pagesignin {
   padding: 50px;
   --main-colors: #00008b;
-  --sec-color: #add8e6;
+  --sec-color: #add8e6 ;
   padding: 20px;
   display: flex;
   width: 100%;
-  background-color: #add8e6;
+  background-color: #add8e6 !important;
   align-items: center;
 }
 .pagesignin h1 {
@@ -82,4 +82,90 @@ form {
     display: flex;
     flex-direction: column;
   }
+}
+:root{
+  --main-colors:#00008B;
+  --sec-color:#ADD8E6;
+}
+.sec-color{
+  background-color: var(--sec-color);
+}
+.updateForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 30px 20px;
+  background: linear-gradient(rgba(173, 216, 230, 0.502),rgba(160, 185, 194, 0.5)),url(https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg);
+
+}
+.updateForm .inputText{
+  width: 280px;
+}
+.updateForm form button{
+
+  width: 280px;
+}
+.updateForm label{
+  font-size: 20px;
+  font-weight: 600;
+}
+.usersTabel{
+  margin: auto;
+  width:100%;
+  background-color:  #ADD8E6;
+  height:100vh;
+}
+.table{
+  background-color: #ADD8E6;
+ 
+}
+.deleteUsers button{
+  border: 0px solid ;
+}
+.deleteUsers svg{
+  display: block;
+  width:25px;
+}
+.updateUser svg{
+  display: block;
+  width:25px;
+
+}
+.updateUser{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+td{
+  background-color: #a3e4fa;
+}
+tfoot{
+  text-align: center;
+  width: 100%;
+  background-color: #ADD8E6;
+}
+tfoot tr td{
+ color: #c6eaf7;
+}
+.goToAddUser{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width:100%;
+
+}
+.linkAdd{
+ border:#050808 solid 2px;
+ background-color:#ADD8E6 ;
+ 
+ width:200px;
+
+ padding:10px 20px;
+ color: #050808;
+  text-decoration: none;
+  font-size:18px;
+  font-weight: 600;
 }

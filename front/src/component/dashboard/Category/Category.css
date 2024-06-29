@@ -5,10 +5,11 @@
     height:100vh;
 }
 .table{
-    background-color: #ADD8E6;
+    background-color: #e7eff1;
    
 }
 .cateimg img{
+    object-fit: contain;
     width:60px;
     height: 60px;
 }

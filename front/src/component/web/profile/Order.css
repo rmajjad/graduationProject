@@ -148,6 +148,6 @@ body {
 
 /* تصميم الخلفية */
 .userorder {
-  background: linear-gradient(rgba(173, 216, 230, 0.502), rgb(173, 216, 230, 0.5)), url('https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg');
+  background: linear-gradient(rgba(173, 216, 230, 0.502), rgb(173, 216, 230, 0.5)), url('https://64fcef1e05e28932c7d49513--creative-naiad-9dae2f.netlify.app/assets/img/light_dot.jpg') !;
   padding: 20px;
 }

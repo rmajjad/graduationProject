@@ -27,7 +27,7 @@ export default function Order() {
   }
    
   return (
-    <div className='userorder vh-100 overflow-auto'>
+    <div className='userorder vh-100 overflow-auto bg-white'>
       <div className="title text-center position-relative">
         <div className="d-flex justify-content-center align-items-center">
           <h2>Welcome</h2>

@@ -81,7 +81,7 @@ getProducts();
   return(
     <>
       {loader==false?
-    <div className='usersTabel col Productss'style={{height:540,backgroundColor: ' #e7eff1' }}>
+    <div className='usersTabel col Productss'style={{height:'auto',backgroundColor: ' #e7eff1' }}>
       <div class="table-responsive">
     <table className="table table-striped my-table" border={6}>
       <thead>
@@ -176,4 +176,4 @@ getProducts();
   )
 }
 
-export default CategoryProducts
+export default CategoryProducts;

@@ -78,7 +78,7 @@ function Products() {
   return (
     <>
       {loader==false?
-    <div className='usersTabel col Productss h-100'style={{height:540}}>
+    <div className='usersTabel col Productss' style={{height:'auto',backgroundColor: ' #e7eff1' }}>
       <div class="table-responsive">
     <table className="table table-striped my-table" border={6}>
       <thead>
@@ -172,4 +172,4 @@ function Products() {
   )
 }
 
-export default Products
+export default Products; 

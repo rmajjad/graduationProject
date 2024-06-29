@@ -6,13 +6,22 @@ import { Bounce, toast } from 'react-toastify';
 import { FaStar } from "react-icons/fa";
 import './product.css';
 
+const StarRating = ({ rating }) => {
+  return (
+    <div className="star-rating">
+      {[...Array(5)].map((star, index) => (
+        <FaStar key={index} size={50} color={index < rating ? '#ffc107' : '#e4e5e9'} />
+      ))}
+    </div>
+  );
+};
+
 export default function Product() {
   const { productsId } = useParams();
   const { addCartContex } = useContext(CartContex);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [Loading, setLoading] = useState(false);
-  const [avgrat, setAvgrat] = useState(0);
 
   const getProducts = async () => {
     try {
@@ -22,33 +31,13 @@ export default function Product() {
       setIsLoading(false);
       return data.product;
     } catch (error) {
-     
+      // Handle error
     }
   };
 
-  const getavgrev = async () => {
-    try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/products/${productsId}`);
-        const data = response.data;
-        
-        if (data.product.reviews.length === 0) {
-            setAvgrat(0);
-            return 0;
-        }
-
-        const sum = data.product.reviews.reduce((acc, review) => acc + review.rating, 0);
-        const avg = Math.round(sum / data.product.reviews.length);
-        setAvgrat(avg);
-        return avg;
-    } catch (error) {
-        console.error(error);
-    }
-};
-
-
   const addtocart = async (productid) => {
     setLoading(true)
-    try{
+    try {
       const res = await addCartContex(productid);
       if (res.message === 'success') {
         toast.success('Product added successfully', {
@@ -64,7 +53,7 @@ export default function Product() {
         });
       }
       return res;
-    }catch(error){
+    } catch (error) {
       toast.error('Product already exist', {
         position: "top-center",
         autoClose: 5000,
@@ -75,21 +64,24 @@ export default function Product() {
         progress: undefined,
         theme: "colored",
         transition: Bounce,
-        });
-    }finally{
+      });
+    } finally {
       setLoading(false)
     }
-   
-    
   };
 
   useEffect(() => {
     getProducts();
-    getavgrev();
   }, [productsId]);
 
   const handleImageClick = (src) => {
     document.querySelector('.main-img').setAttribute('src', src);
+  };
+
+  const calculateAverageRating = (reviews) => {
+    if (reviews.length === 0) return 0;
+    const total = reviews.reduce((acc, review) => acc + review.rating, 0);
+    return (total / reviews.length).toFixed(1);
   };
 
   return (
@@ -100,8 +92,8 @@ export default function Product() {
             <div className='container-fluid py-5 Products text-center py-5'>
               <div className='row py-5'>
                 <div className='col-6'>
-                  <div className="main-img-container ">
-                    <img src={data?.product?.mainImage.secure_url} className="main-img img-fluid  " alt="Main Product" />
+                  <div className="main-img-container">
+                    <img src={data?.product?.mainImage.secure_url} className="main-img img-fluid" alt="Main Product" />
                   </div>
                   <div className="sub-img-container">
                     <img src={data?.product?.mainImage.secure_url} className="sub-img rounded-5 me-3" alt="Sub Product" onClick={() => handleImageClick(data?.product?.mainImage.secure_url)} />
@@ -111,7 +103,7 @@ export default function Product() {
                   </div>
                 </div>
                 <div className='col-6 text-center'>
-                  <div className=" title text-center position-relative">
+                  <div className="title text-center position-relative">
                     <div className="d-flex justify-content-center align-items-center">
                       <h2>Welcome</h2>
                       <span className="position-absolute fs-3">{data?.product?.name}</span>
@@ -119,19 +111,13 @@ export default function Product() {
                     <p className="text-start py-5 container-fluid w-75 d-flex mt-4 justify-content-center align-items-center lead">{data?.product?.description}</p>
                   </div>
                   <p className='finalPrice'>{data?.product?.price}$</p>
-                  <p>
-                    <span className='avg d-block'>avg rating :</span>
-                    {[...Array(5)].map((star, index) => (
-                      <FaStar size={50} color={index < avgrat ? '#ffc107' : '#e4e5e9'} key={index} />
-                    ))}
-                  </p>
+                  Avg rating: <StarRating rating={calculateAverageRating(data?.product?.reviews)} />
                   <button className='mt-5 btn btn-dark d-block px-5 m-auto text-center w-50' onClick={() => addtocart(data.product._id)} disabled={isLoading ? "disabled" : ""}>
                     <div className='d-flex justify-content-between'>
                       <svg xmlns="http://www.w3.org/2000/svg" width="90" height="25" fill="currentColor" className="bi bi-bag-heart" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
                       </svg>
-                      {!Loading?" Add to Cart":"wating.."}
-                     
+                      {!Loading ? " Add to Cart" : "wating.."}
                     </div>
                   </button>
                   <Link className='mt-5 btn btn-dark d-block px-5 m-auto text-center w-50' to={`/products/${data?.product?.id}/review`}>
@@ -152,7 +138,7 @@ export default function Product() {
               <div className="title text-center position-relative">
                 <div className="d-flex justify-content-center align-items-center">
                   <h2 className='text-info'>Reviews</h2>
-                  <span className="position-absolute fs-3">Avg rating And Feedback</span>
+                  <span className="position-absolute fs-3"> and Feedback</span>
                 </div>
               </div>
               <h1 className='text-center py-4'></h1>
@@ -161,7 +147,7 @@ export default function Product() {
                   <h3 className='text-black'>{review?.userId.userName}</h3>
                   <p>{review.comment}</p>
                   {[...Array(5)].map((star, index) => (
-                    <FaStar size={50} color={index <= review.rating ? '#ffc107' : '#e4e5e9'} key={index} />
+                    <FaStar size={50} color={index < review.rating ? '#ffc107' : '#e4e5e9'} key={index} />
                   ))}
                 </div>
               ))}

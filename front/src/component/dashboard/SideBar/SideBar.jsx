@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 import './SideBar.css'
 function SideBar() {
   return (
-<div className='main '>
+<div className='main'>
 
-<nav className="adminbar navbar navbarr flex-column navbar-expand-lg bg-body-tertiary1 partnav" > 
+<nav className="adminbar navbar navbarr flex-column navbar-expand-lg bg-body-tertiary1 partnav" style={{height:540}}> 
 
 <div className='div1'>
   <h2>Admin</h2>
@@ -54,4 +54,4 @@ function SideBar() {
   )
 }
 
-export default SideBar
+export default SideBar;
